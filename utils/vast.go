@@ -2,6 +2,8 @@ package utils
 
 import (
 	"fmt"
+	"time"
+
 	hvast "github.com/haxqer/vast"
 	"github.com/infytvcode/dsp/models"
 )
@@ -34,7 +36,7 @@ func GenerateADM(campaign *models.Campaign) *hvast.VAST {
 					Creatives: []hvast.Creative{{
 						ID: campaign.Ad.ID,
 						Linear: &hvast.Linear{
-							Duration: hvast.Duration(campaign.Ad.Duration),
+							Duration: hvast.Duration(campaign.Ad.Duration * int(time.Second)),
 							VideoClicks: &hvast.VideoClicks{
 								ClickThroughs: []hvast.VideoClick{
 									{URI: ""},
