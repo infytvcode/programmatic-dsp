@@ -41,6 +41,8 @@ func main() {
 
 	app.Post("/openrtb", handlers.OpenRTBHandler)
 	app.Get("/vast", handlers.VastHandler)
+	app.Get("/vmap", handlers.VmapHandler)
+	app.Get("/aws_vast", handlers.VastHandler)
 	app.Get("/tracking", handlers.Tracking)
 
 	// Create a /api/v1 endpoint
