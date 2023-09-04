@@ -32,7 +32,11 @@ func main() {
 
 	// Middleware
 	app.Use(recover.New())
-	app.Use(cors.New())
+	app.Use(cors.New(cors.Config{
+		AllowOrigins:     "https://imasdk.googleapis.com",
+		AllowHeaders:     "Origin, Content-Type, Accept",
+		AllowCredentials: true,
+	}))
 	app.Use(requestid.New())
 	app.Use(logger.New(logger.Config{
 		// For more options, see the Config section
@@ -42,6 +46,7 @@ func main() {
 	app.Post("/openrtb", handlers.OpenRTBHandler)
 	app.Get("/vast", handlers.VastHandler)
 	app.Get("/vmap", handlers.VmapHandler)
+	app.Get("/vpaid", handlers.VpaidHandler)
 	app.Get("/aws_vast", handlers.VastHandler)
 	app.Get("/tracking", handlers.Tracking)
 
